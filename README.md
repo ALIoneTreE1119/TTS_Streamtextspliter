@@ -1,2 +1,2 @@
 # Comfyui-of-tree
-Solution of some issues I met when I use Comfyui
+1.TTS_BatchTextSplitter is used to streaming output of text.
