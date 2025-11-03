@@ -32,8 +32,8 @@ class TTS_BatchTextSplitter:
                     "default": "",
                     "dynamicPrompts": True
                 }),
-                "split_mode": (["标点符号", "固定长度", "自定义正则", "智能分句"], {
-                    "default": "智能分句"
+                "split_mode": (["竖线分割", "标点符号", "固定长度", "自定义正则", "智能分句"], {
+                    "default": "竖线分割"
                 }),
                 "max_segments": ("INT", {
                     "default": 100,
@@ -81,7 +81,9 @@ class TTS_BatchTextSplitter:
         # 根据模式分句
         segments = []
         
-        if split_mode == "标点符号":
+        if split_mode == "竖线分割":
+            segments = self._split_by_pipe(text)
+        elif split_mode == "标点符号":
             segments = self._split_by_punctuation(text, keep_delimiter)
         elif split_mode == "固定长度":
             segments = self._split_by_length(text, split_length)
@@ -114,6 +116,11 @@ class TTS_BatchTextSplitter:
         
         # 返回列表，ComfyUI会自动批处理
         return (segments,)
+    
+    def _split_by_pipe(self, text: str) -> List[str]:
+        """按照竖线符号 | 分句"""
+        segments = text.split('|')
+        return segments
     
     def _split_by_punctuation(self, text: str, keep_delimiter: bool = True) -> List[str]:
         """按照中英文标点符号分句"""
