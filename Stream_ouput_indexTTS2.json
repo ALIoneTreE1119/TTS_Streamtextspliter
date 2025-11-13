@@ -1,0 +1,409 @@
+{
+  "id": "45b0f8d6-e15c-4c1d-b3e0-ee5dce7388cd",
+  "revision": 0,
+  "last_node_id": 25,
+  "last_link_id": 28,
+  "nodes": [
+    {
+      "id": 17,
+      "type": "TTS_BatchTextSplitter",
+      "pos": [
+        -1779.44287109375,
+        1085.063720703125
+      ],
+      "size": [
+        400,
+        208
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 18
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text_batch",
+          "shape": 6,
+          "type": "STRING",
+          "links": [
+            19
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "TTS_BatchTextSplitter",
+        "cnr_id": "was-node-suite-comfyui",
+        "ver": "ea935d1044ae5a26efa54ebeb18fe9020af49a45",
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "text": true,
+            "split_mode": true,
+            "max_segments": true,
+            "split_length": true,
+            "regex_pattern": true,
+            "keep_delimiter": true
+          },
+          "version": "7.1",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "",
+        "智能分句",
+        100,
+        50,
+        "(?<=[。！？.!?])\\s*",
+        true
+      ]
+    },
+    {
+      "id": 10,
+      "type": "IndexTTS2Run",
+      "pos": [
+        -1286.23388671875,
+        702.7839965820312
+      ],
+      "size": [
+        400,
+        630
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "音频",
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 10
+        },
+        {
+          "label": "文本",
+          "name": "text",
+          "type": "STRING",
+          "link": 19
+        },
+        {
+          "label": "对话音频_s2",
+          "name": "dialogue_audio_s2",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": null
+        },
+        {
+          "label": "情绪音频提示",
+          "name": "emo_audio_prompt",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": 11
+        },
+        {
+          "label": "情绪音频提示_s2",
+          "name": "emo_audio_prompt_s2",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "音频",
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [
+            13,
+            28
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "indextts-mw",
+        "ver": "414e056e4015c7655cbbb9948e64d8cd96026488",
+        "Node name for S&R": "IndexTTS2Run",
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "top_k": true,
+            "top_p": true,
+            "temperature": true,
+            "num_beams": true,
+            "max_mel_tokens": true,
+            "max_text_tokens_per_sentence": true,
+            "custom_cuda_kernel": true,
+            "deepspeed": true,
+            "unload_model": true,
+            "emo_alpha": true,
+            "emo_vector": true,
+            "use_emo_text": true,
+            "emo_text": true,
+            "use_random": true,
+            "emo_alpha_s2": true,
+            "emo_vector_s2": true,
+            "use_emo_text_s2": true,
+            "emo_text_s2": true,
+            "use_random_s2": true
+          },
+          "version": "7.1",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        30,
+        0.8,
+        0.8,
+        3,
+        1500,
+        120,
+        false,
+        true,
+        false,
+        1,
+        "",
+        false,
+        "",
+        false,
+        1,
+        "",
+        false,
+        "",
+        false
+      ]
+    },
+    {
+      "id": 25,
+      "type": "SaveAudio",
+      "pos": [
+        -679.9414672851562,
+        753.693359375
+      ],
+      "size": [
+        270,
+        112
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 28
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.59",
+        "Node name for S&R": "SaveAudio",
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "filename_prefix": true,
+            "audioUI": true
+          },
+          "version": "7.1",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "audio/ComfyUI"
+      ]
+    },
+    {
+      "id": 12,
+      "type": "LoadAudio",
+      "pos": [
+        -1794.3336181640625,
+        891.3250122070312
+      ],
+      "size": [
+        270,
+        136
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            11
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.57",
+        "Node name for S&R": "LoadAudio",
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "audio": true,
+            "audioUI": true,
+            "upload": true
+          },
+          "version": "7.1",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "Male-1_Wha—CutegigglesYouthinkImcute.wav",
+        null,
+        null
+      ]
+    },
+    {
+      "id": 11,
+      "type": "LoadAudio",
+      "pos": [
+        -1780.6114501953125,
+        698.4371337890625
+      ],
+      "size": [
+        270,
+        136
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            10
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.57",
+        "Node name for S&R": "LoadAudio",
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "audio": true,
+            "audioUI": true,
+            "upload": true
+          },
+          "version": "7.1",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "Male-1_哎呀忘了他还在那等我们呢giggles我们两个动作得快点了.wav",
+        null,
+        null
+      ]
+    },
+    {
+      "id": 13,
+      "type": "Text Multiline",
+      "pos": [
+        -2191.762939453125,
+        1099.7315673828125
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "label": "字符串",
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            18
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "was-node-suite-comfyui",
+        "ver": "1.0.2",
+        "Node name for S&R": "Text Multiline",
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "text": true
+          },
+          "version": "7.1",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "诶，各位，又见面了！上次聊了点现代生活，今天咱们聊点“复古”的。在座的各位，有喜欢《三国演ยุค》的吗？（停顿，看观众反应）喜欢就对了！这说明咱们都是有文化的人。\n\n不过我发现啊，这《三国》，你不能用正常的眼光看。你要是用现在的眼光看，这哪是历史啊，这分明就是一部《东汉末年职场风云》外加《乡村企业家创业史》。\n\n你琢磨琢磨，刘备，刘皇叔，就是典型的草根创业者。开局什么样？“CEO”刘备，带着两个合伙人，“COO”关羽和“市场总监”张飞。三个人在一个桃园里，喝了点酒，拜了把子，这就叫“天使轮融资”完成了。投资人？他们仨自己。公司资产？三个人，两匹马，外加关总监手上那把八十二斤重的……“公司logo”。\n\n刘备这个人，别的能耐不说，个人魅力（Personal Branding）做得是真好。走到哪儿都一句话：“我，刘备，汉室宗亲。” 这就跟现在创业者说“我，哈佛毕业”一样，先给你个title镇住你。\n\n他最厉害的技能是什么？不是武功，也不是谋略，是哭！一遇到解决不了的KPI，就开“哭”。赵云在长坂坡七进七出把阿斗救回来，他“啪”一下就把孩子扔了，抱着赵云哭：“为了这个没用的玩意儿，差点损失我一员大将！” 你看这老板，多会收买人心！阿斗当时估计都懵了，心里想：“我这是被当成‘新人入职大礼包’发给了赵将军吗？”\n\n当然，公司发展光靠老板哭是不行的，得有核心技术。于是刘备就去请“首席技术官”诸葛亮。这“三顾茅庐”啊，放现在就是猎头挖人。\n\n第一次去，诸ger亮说：“我在睡觉，不见。” 这叫什么？饥饿营销。\n第二次去，又没见着。这叫欲擒故纵。\n第三次，刘备带着俩合伙人，在门口站了半天。诸葛亮终于睡醒了，过来第一句话是什么？“天下大势，分久必合，合久必分……”\n\n您听听，这就是高手。上来没问薪资待遇、五险一金，直接开始做“市场前景分析”和“公司战略规划”，这就是著名的《隆中对》商业计划书。刘备一听，激动了，眼泪又下来了：“先生！我公司的未来就靠您这个PPT了！”\n\n再看他们的竞争对手，曹操。曹总的公司，那是家大业大，属于行业巨头。人家不搞虚的，口号就是：“宁我负天下人，休教天下人负我。” 这企业文化，就问你“狼不狼性”？曹总手下人才济济，但有个毛病，疑心病重。他那个“梦中杀人”的故事，放现在就是老板半夜三点在工作群里发个红包，谁领了，第二天就去人事部谈话。“小王啊，你很有精神嘛，看来最近工作不饱和啊。”\n\n还有江东的孙权。孙总属于是“富二代”创业，继承家业。公司稳定，地盘也好，就是存在感稍微低了点。手下有个大帅哥周瑜，业务能力超强，就是气量小。老跟竞争对手的CTO诸葛亮较劲。\n\n赤壁之战，周瑜看见诸葛亮“草船借箭”，借了十万支箭回来，当时就气得不行。放现在就是，周瑜带团队吭哧吭哧加班一个月，赶出来一个项目。结果诸葛亮那边呢，直接开源了一个代码库，功能还比他的好。周瑜当时就发了条朋友圈，仅诸葛亮可见：“TMD，卷死我了！”\n\n最后周瑜被气死的时候，大喊一声：“既生瑜，何生亮！”——“既然市场上已经有了我这么帅这么牛的周总监，为什么还要出现一个姓诸葛的产品经理！”\n\n所以说啊，历史总是惊人的相似。我们今天在职场里遇到的那些事儿，什么团队合作、竞争对手、老板画饼、KPI压力……三国里头全都有。只不过，我们开会是在会议室，人家是在中军大帐；我们写PPT，人家写《出师表》。\n\n所以，以后再遇到困难，别抱怨了，多看看《三国》。你会发现，跟他们比起来，咱们这点班儿，真的不算什么。\n\n谢谢大家！"
+      ]
+    }
+  ],
+  "links": [
+    [
+      10,
+      11,
+      0,
+      10,
+      0,
+      "AUDIO"
+    ],
+    [
+      11,
+      12,
+      0,
+      10,
+      3,
+      "AUDIO"
+    ],
+    [
+      18,
+      13,
+      0,
+      17,
+      0,
+      "STRING"
+    ],
+    [
+      19,
+      17,
+      0,
+      10,
+      1,
+      "STRING"
+    ],
+    [
+      28,
+      10,
+      0,
+      25,
+      0,
+      "AUDIO"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.6085649887302786,
+      "offset": [
+        2194.180268619999,
+        -513.5786584775583
+      ]
+    },
+    "ue_links": [],
+    "links_added_by_ue": [],
+    "frontendVersion": "1.25.11",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
