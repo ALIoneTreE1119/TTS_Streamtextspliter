@@ -1,6 +1,6 @@
 # 🎙️ TTS流式批处理节点
 
-**让ComfyUI实现真正的TTS流式处理**
+**TTS流式处理**
 
 2025-11-03 update
 ---
@@ -168,4 +168,5 @@ MIT License
 Made with ❤️ for ComfyUI Community
 
 </div>
+
 
